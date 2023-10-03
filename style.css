@@ -27,9 +27,21 @@ hr {
     width: 60vw;
 }
 
-.board {
+#board {
     height: 450px;
     width: 450px;
     margin: auto;
+    padding: 0;
     background-color: beige;
+    display: flex;
+    flex-flow: wrap row;
+}
+
+.tile {
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    background-color: aquamarine;
+    margin: 0;
+    box-sizing: border-box;
 }
