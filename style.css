@@ -11,6 +11,9 @@ body {
     height: 95vh;
     margin: 10px;
     background-color: cadetblue;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1 {
@@ -22,4 +25,11 @@ h1 {
 
 hr {
     width: 60vw;
+}
+
+.board {
+    height: 450px;
+    width: 450px;
+    margin: auto;
+    background-color: beige;
 }
