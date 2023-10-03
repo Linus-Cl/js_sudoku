@@ -45,3 +45,22 @@ function changeTile(tile) {
     tile.className = "active-tile";
 
 }
+
+document.addEventListener('keydown', function (event) {
+    if (event.key > 0 && event.key <= 9 && activeTile) {
+        activeTile.textContent = event.key;
+        updateBoard(activeTile.id, event.key);
+        activeTile.className = "tile";
+        activeTile = null;
+    }
+    else {
+        console.log("invalid input or no active file");
+    }
+})
+
+
+function updateBoard(id, num) {
+    const coords = id.split("-");
+    board[coords[0]][coords[1]] = num;
+    //console.log(board);
+}
