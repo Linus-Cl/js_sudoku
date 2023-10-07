@@ -1,14 +1,3 @@
-let emptyBoard = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-];
 
 let board = [
     [4, 1, 0, 0, 6, 5, 0, 0, 7],
@@ -22,21 +11,11 @@ let board = [
     [6, 0, 0, 3, 0, 0, 0, 1, 0],
 ];
 
-let boardValid = [
-    [5, 3, 4, 6, 7, 8, 9, 1, 2],
-    [6, 7, 2, 1, 9, 5, 3, 4, 8],
-    [1, 9, 8, 3, 4, 2, 5, 6, 7],
-    [8, 5, 9, 7, 6, 1, 4, 2, 3],
-    [4, 2, 6, 8, 5, 3, 7, 9, 1],
-    [7, 1, 3, 9, 2, 4, 8, 5, 6],
-    [9, 6, 1, 5, 3, 7, 2, 8, 4],
-    [2, 8, 7, 4, 1, 9, 6, 3, 5],
-    [3, 4, 5, 2, 8, 6, 1, 7, 9],
-];
-
 let activeTile = null;
+const evalButton = document.getElementById("eval-button");
+const outputText = document.getElementById("text-out");
 
-window.onload = (event) => {
+window.onload = () => {
     setupGame();
 };
 
@@ -82,7 +61,6 @@ function changeTile(tile) {
     console.log(tile.id);
     activeTile = tile;
     tile.className = "active-tile";
-
 }
 
 document.addEventListener('keydown', function (event) {
@@ -93,9 +71,9 @@ document.addEventListener('keydown', function (event) {
         activeTile = null;
     }
     else {
-        console.log("invalid input or no active file");
+        console.log("invalid input or no active tile");
     }
-})
+});
 
 
 function updateBoard(id, num) {
@@ -168,3 +146,12 @@ function evaluateBlock() {
     console.log("block ok");
     return true;
 }
+
+evalButton.addEventListener('click', () => {
+    if (evaluateBoard()) {
+        outputText.innerText = "Well Done!";
+    } else {
+        outputText.innerText = "Thats not quite right!";
+        setTimeout(() => { outputText.innerText = "Good luck!"; }, 3000);
+    }
+});
