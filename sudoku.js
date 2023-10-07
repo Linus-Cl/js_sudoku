@@ -41,6 +41,13 @@ window.onload = (event) => {
 };
 
 function setupGame() {
+
+    for (let i = 0; i < 9; i++) {
+        let box = document.createElement("div");
+        box.className = "board-outline";
+        document.getElementById("rel-board").appendChild(box);
+    }
+
     for (let r = 0; r < 9; r++) {
         for (let c = 0; c < 9; c++) {
             let tile = document.createElement("div");
